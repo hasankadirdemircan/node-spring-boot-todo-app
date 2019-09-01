@@ -7,6 +7,7 @@ public class UserDto extends BaseDtoAudit {
     private Integer id;
     private String username;
     private String password;
+    private String role;
 
     public Integer getId() {
         return id;
@@ -30,5 +31,13 @@ public class UserDto extends BaseDtoAudit {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

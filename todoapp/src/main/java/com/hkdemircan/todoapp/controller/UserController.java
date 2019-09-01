@@ -20,7 +20,7 @@ public class UserController {
     UserService userService;
 
 
-    @PostMapping("/users")
+    @PostMapping("/user")
     public UserResponse createUser(@Valid @RequestBody UserRequest req, HttpServletResponse httpRes){
         UserResponse res = null;
 

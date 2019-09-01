@@ -16,6 +16,8 @@ public class User extends BaseModelAudit {
 
     private String password;
 
+    private String role;
+
     public Integer getId() {
         return id;
     }
@@ -38,5 +40,13 @@ public class User extends BaseModelAudit {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

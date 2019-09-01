@@ -15,7 +15,7 @@ public class BaseModelAudit extends BaseModel {
 
     @PrePersist
     public void prePersist() {
-        this.createBy = "admin";
+        this.createBy = "admin";//SecurityContextHolder.getContext().getAuthentication().getName(); jwt ekledikten sonra.
         this.createDate = new Date();
     }
 

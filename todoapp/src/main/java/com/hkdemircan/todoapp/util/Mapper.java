@@ -19,6 +19,7 @@ public class Mapper {
         model.setPassword(dto.getPassword());
         model.setCreateBy(dto.getCreateBy());
         model.setCreateDate(dto.getCreateDate());
+        model.setRole(dto.getRole());
 
         return model;
     }
@@ -35,6 +36,7 @@ public class Mapper {
         dto.setPassword(model.getPassword());
         dto.setCreateBy(model.getCreateBy());
         dto.setCreateDate(model.getCreateDate());
+        dto.setRole(model.getRole());
 
         return dto;
 
