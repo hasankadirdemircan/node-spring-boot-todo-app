@@ -8,7 +8,12 @@ import javax.persistence.*;
 @Table(name = "user")
 public class User extends BaseModelAudit {
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7713856648419571706L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 

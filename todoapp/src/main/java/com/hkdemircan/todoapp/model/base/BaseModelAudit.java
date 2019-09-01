@@ -6,7 +6,12 @@ import java.util.Date;
 @MappedSuperclass
 public class BaseModelAudit extends BaseModel {
 
-    @Column(name = "CREATE_BY")
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8317636893017678965L;
+
+	@Column(name = "CREATE_BY")
     private String createBy;
 
     @Column(name = "CREATE_DATE")
