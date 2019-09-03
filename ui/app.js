@@ -6,6 +6,7 @@ const compression = require('compression');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
+const cookieParser = require('cookie-parser');
 const chalk = require('chalk');
 const errorHandler = require('errorhandler');
 const lusca = require('lusca');
@@ -15,26 +16,28 @@ const flash = require('express-flash');
 const path = require('path');
 const mongoose = require('mongoose');
 const passport = require('passport');
+const expressValidator = require('express-validator');
 const expressStatusMonitor = require('express-status-monitor');
 const sass = require('node-sass-middleware');
 const multer = require('multer');
+const i18n = require("i18n");
 
 const upload = multer({ dest: path.join(__dirname, 'uploads') });
-
+const util = require('./utils/util');
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
  */
-var environment = process.env.NODE_ENV || 'production';
+/**
+ * Load environment variables from .env file, where API keys and passwords are configured.
+ */
+  dotenv.load({ path: './env/dev.env' });
 
-if (environment && (environment == 'dev' || environment == 'development')) {
-  dotenv.load({ path: 'env/dev.env' });
-}
 
 /**
  * Controllers (route handlers).
  */
 const userController = require('./controllers/user');
-;
+const todoController = require('./controllers/todo');
 
 
 /**
@@ -51,7 +54,7 @@ const app = express();
  * Express configuration.
  */
 app.set('host', process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0');
-app.set('port', process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8082);
+app.set('port', process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8085);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 app.use(expressStatusMonitor());
@@ -63,6 +66,17 @@ app.use(sass({
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(expressValidator());
+app.use(cookieParser());
+app.use(session({
+  resave: true,
+  saveUninitialized: true,
+  secret: process.env.SESSION_SECRET,
+  cookie: { maxAge: 1209600000 }, // two weeks in milliseconds
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 /*app.use(session({
   resave: true,
   saveUninitialized: true,
@@ -74,9 +88,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
   })
 }));
 */
-//app.use(passport.initialize());
-//app.use(passport.session());
-//app.use(flash());
+
 /*app.use((req, res, next) => {
   if (req.path === '/api/upload') {
     // Multer multipart/form-data handling needs to occur before the Lusca CSRF check.
@@ -93,6 +105,26 @@ app.use((req, res, next) => {
   next();
 });
 
+
+/*app.use(i18n.init);
+app.use((req, res, next) => {
+  var locale = req.cookies['_locale'];
+
+  if (!locale) {
+    locale = process.env.DEFAULT_LOCALE;
+  }
+  if (req.query &&
+    req.query.lang &&
+    acceptedLocales.includes(req.query.lang)) {
+    locale = req.query.lang;
+  }
+
+  res.cookie('_locale', locale, { maxAge: 31557600000, httpOnly: true });
+  res.setLocale(locale);
+  next();
+});
+
+*/
 app.use('/', express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
 app.use('/js/lib', express.static(path.join(__dirname, 'node_modules/chart.js/dist'), { maxAge: 31557600000 }));
 app.use('/js/lib', express.static(path.join(__dirname, 'node_modules/popper.js/dist/umd'), { maxAge: 31557600000 }));
@@ -100,8 +132,16 @@ app.use('/js/lib', express.static(path.join(__dirname, 'node_modules/bootstrap/d
 app.use('/js/lib', express.static(path.join(__dirname, 'node_modules/jquery/dist'), { maxAge: 31557600000 }));
 app.use('/webfonts', express.static(path.join(__dirname, 'node_modules/@fortawesome/fontawesome-free/webfonts'), { maxAge: 31557600000 }));
 
+app.locals.hasRole = function(user, roles) {
+  return util.hasRole(user, roles);
+};
+/**
+ * Primary app routes.
+ */
+app.get('/', passportConfig.isAuthenticated, todoController.getTodos);
 app.get('/login', userController.getLogin);
-app.get('/', userController.getLogin);
+app.post('/login', userController.postLogin);
+
 
 /**
  * Error Handler.
