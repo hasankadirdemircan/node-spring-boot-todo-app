@@ -2,6 +2,7 @@ package com.hkdemircan.todoapp.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.hkdemircan.todoapp.dto.UserDto;
+import com.hkdemircan.todoapp.enums.Error;
 import com.hkdemircan.todoapp.response.base.BaseResponse;
 
 public class UserResponse extends BaseResponse {

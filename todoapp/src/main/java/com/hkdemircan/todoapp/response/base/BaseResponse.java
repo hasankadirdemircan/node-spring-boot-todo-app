@@ -1,6 +1,7 @@
 package com.hkdemircan.todoapp.response.base;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.hkdemircan.todoapp.enums.Error;
 
 import java.io.Serializable;
 

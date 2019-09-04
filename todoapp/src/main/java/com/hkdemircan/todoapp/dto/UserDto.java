@@ -1,10 +1,16 @@
 package com.hkdemircan.todoapp.dto;
 
 import com.hkdemircan.todoapp.dto.base.BaseDtoAudit;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
+@ApiModel(description = "All details about the User. ")
 public class UserDto extends BaseDtoAudit {
 
+    @ApiModelProperty(notes = "The database generated user ID")
     private Integer id;
+
+    @ApiModelProperty(notes = "The database generated username")
     private String username;
     private String password;
     private String role;
