@@ -16,7 +16,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/user")
-@Api(value="User Management System", description="Operations pertaining to employee in Employee Management System")
+@Api(value="User Management System", description="Operations pertaining to user in User Management System")
 public class UserController {
 
     @Autowired

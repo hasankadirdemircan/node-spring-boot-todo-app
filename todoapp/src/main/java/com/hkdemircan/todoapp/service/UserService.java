@@ -4,6 +4,6 @@ import com.hkdemircan.todoapp.dto.UserDto;
 
 public interface UserService {
 
-    public UserDto saveUser(UserDto userDto);
-    public UserDto updateUser(UserDto userDto);
+    UserDto saveUser(UserDto userDto);
+    UserDto updateUser(UserDto userDto);
 }

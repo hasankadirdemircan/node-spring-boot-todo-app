@@ -1,27 +1,26 @@
 package com.hkdemircan.todoapp.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.hkdemircan.todoapp.dto.TodoDto;
 import com.hkdemircan.todoapp.dto.UserDto;
 import com.hkdemircan.todoapp.enums.Error;
 import com.hkdemircan.todoapp.response.base.BaseResponse;
 
-public class UserResponse extends BaseResponse {
+public class TodoResponse extends BaseResponse {
 
-
-    public UserResponse(int statusCode, Error error, UserDto user) {
+    public TodoResponse(int statusCode, Error error, TodoDto todo) {
         super(statusCode, error);
-        this.user = user;
+        this.todo = todo;
     }
-
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private UserDto user;
+    private TodoDto todo;
 
-    public UserDto getUser() {
-        return user;
+    public TodoDto getTodo() {
+        return todo;
     }
 
-    public void setUser(UserDto user) {
-        this.user = user;
+    public void setTodo(TodoDto todo) {
+        this.todo = todo;
     }
 }
