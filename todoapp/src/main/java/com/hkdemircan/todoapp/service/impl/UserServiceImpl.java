@@ -14,14 +14,19 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    Mapper mapper;
+
     @Override
     public UserDto saveUser(UserDto userDto) {
+       // before updating
         //maybe validation aria
-        User user = Mapper.dto2Model(userDto);
+       // User user = Mapper.dto2Model(userDto);
         //maybe user.setPassword
+       // return Mapper.model2Dto(userRepository.save(user));
 
-        return Mapper.model2Dto(userRepository.save(user));
-
+        User user = mapper.dto2Model(userDto);
+        return mapper.model2Dto(userRepository.save(user));
     }
 
     @Override
