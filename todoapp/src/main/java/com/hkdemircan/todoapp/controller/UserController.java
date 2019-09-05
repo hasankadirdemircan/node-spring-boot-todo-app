@@ -1,5 +1,6 @@
 package com.hkdemircan.todoapp.controller;
 
+import com.hkdemircan.todoapp.enums.Error;
 import com.hkdemircan.todoapp.request.UserRequest;
 import com.hkdemircan.todoapp.response.UserResponse;
 import com.hkdemircan.todoapp.service.UserService;
@@ -36,8 +37,20 @@ public class UserController {
     @PostMapping("/sign-up")
     public UserResponse createUser(@ApiParam(value = "User create object", required = true) @Valid @RequestBody UserRequest req, HttpServletResponse httpRes){
         UserResponse res = null;
-        req.getUser().setPassword(bCryptPasswordEncoder.encode(req.getUser().getPassword()));
-        res = new UserResponse(HttpServletResponse.SC_OK, null, userService.saveUser(req.getUser()));
+
+        if(null == req.getUser()){
+            res = new UserResponse(HttpServletResponse.SC_BAD_REQUEST, Error.ERR998, null);
+        }else{
+            try{
+                req.getUser().setPassword(bCryptPasswordEncoder.encode(req.getUser().getPassword()));
+                res = new UserResponse(HttpServletResponse.SC_OK, null, userService.saveUser(req.getUser()));
+
+            }catch (Exception e){
+                e.printStackTrace();
+                res = new UserResponse(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, Error.ERR000, null);
+            }
+        }
+
         httpRes.setStatus(res.getStatusCode());
         return res;
     }

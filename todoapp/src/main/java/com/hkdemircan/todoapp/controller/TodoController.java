@@ -1,6 +1,7 @@
 package com.hkdemircan.todoapp.controller;
 
 
+import com.hkdemircan.todoapp.enums.Error;
 import com.hkdemircan.todoapp.request.TodoRequest;
 import com.hkdemircan.todoapp.request.UserRequest;
 import com.hkdemircan.todoapp.response.TodoResponse;
@@ -28,8 +29,18 @@ public class TodoController {
     @PostMapping("/save")
     public TodoResponse saveTodo(@ApiParam(value = "Todo save object", required = true) @Valid @RequestBody TodoRequest req, HttpServletResponse httpRes){
         TodoResponse res = null;
+        
+        if(null == req.getTodo()){
+            res = new TodoResponse(HttpServletResponse.SC_BAD_REQUEST, Error.ERR998, null);
+        }else{
+            try{
+                res = new TodoResponse(HttpServletResponse.SC_OK, null, todoService.saveTodo(req.getTodo()));
 
-        res = new TodoResponse(HttpServletResponse.SC_OK, null, todoService.saveTodo(req.getTodo()));
+            }catch (Exception e){
+                e.printStackTrace();
+                res = new TodoResponse(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,  Error.ERR000, null);
+            }
+        }
         httpRes.setStatus(res.getStatusCode());
         return res;
     }

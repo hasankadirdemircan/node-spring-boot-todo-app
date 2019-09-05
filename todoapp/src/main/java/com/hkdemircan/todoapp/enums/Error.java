@@ -12,6 +12,7 @@ public enum Error {
     ERR998("No privilege for this operation."),
     ERR997("Request is incorrect."),
 
+    ERR000("An unknown error has occurred. Please contact us."),
     ERR001("Username / password is not valid."),
     ERR002("User has no role.");
 
