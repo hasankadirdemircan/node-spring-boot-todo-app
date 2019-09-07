@@ -15,3 +15,22 @@
   </a>
 </p>
 
+## Views <br>
+
+<p align="center">
+  <a href="#">
+    <img alt="Techs" title="Techs" src="https://user-images.githubusercontent.com/34090058/64479946-6eda2d00-d1c7-11e9-8ef0-c4800c27c697.png"width="700">
+  </a>
+</p>
+
+<p align="center">
+  <a href="#">
+    <img alt="Techs" title="Techs" src="https://user-images.githubusercontent.com/34090058/64479962-a47f1600-d1c7-11e9-96b8-7ec251b9eb10.png"width="700">
+  </a>
+</p>
+
+<p align="center">
+  <a href="#">
+    <img alt="Techs" title="Techs" src="https://user-images.githubusercontent.com/34090058/64479970-d7290e80-d1c7-11e9-9abe-f2be4a53347c.png"width="700">
+  </a>
+</p>
