@@ -4,4 +4,23 @@ block content
   br
   div.row
     div.col-md-12
-      h3 WELCOME TO TODO PAGE
+      h3 TODO
+      if todos
+        br
+        div.row
+          div.scrollable-table.table-responsive
+            table(data-toggle='table', data-filter-control='true', data-show-export='true')
+              thead
+                tr
+                  th(data-field='createBy', data-sortable='true', data-filter-control='input') createBy
+                  th(data-field='createDate', data-sortable='true', data-filter-control='select') createDate
+                  th(data-field='username', data-sortable='true', data-filter-control='select') username
+                  th(data-field='todo', data-sortable='true', data-filter-control='select') todo
+              tbody
+                each todo in todos
+                  tr
+                    td=todo.createBy
+                    td=todo.createDate
+                    td=todo.username
+                    td=todo.todo
+

@@ -44,3 +44,24 @@ exports.login = (username, password, cb) => {
       }
     });
   };
+
+  exports.getTodos = (me, cb) => {
+    var data = {};
+
+    console.info('request data -->', data);
+
+    console.info('request headers --> ', me.authorization);
+    const options = {
+      url: `${process.env.API_URL}${process.env.API_TODO}`,
+      method: 'GET',
+      json: data,
+      headers: {
+        Authorization: me.authorization
+      }
+    };
+    console.info('request url --> ',  options.url);
+    request(options, function (error, response, data) {
+      console.info('response data-->', data);
+      return cb(data);
+    });
+  };
