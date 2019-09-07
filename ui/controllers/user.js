@@ -37,7 +37,7 @@ exports.logout = (req, res) =>{
  */
 exports.getNewUser = (req, res) => {
   res.render('account/signup', {
-    title: 'Signup'
+    title: 'Create Account'
   });
 }
 
