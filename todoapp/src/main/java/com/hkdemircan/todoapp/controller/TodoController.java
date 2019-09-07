@@ -1,6 +1,7 @@
 package com.hkdemircan.todoapp.controller;
 
 
+import com.hkdemircan.todoapp.component.Authentication;
 import com.hkdemircan.todoapp.enums.Error;
 import com.hkdemircan.todoapp.request.TodoRequest;
 import com.hkdemircan.todoapp.request.UserRequest;
@@ -26,14 +27,18 @@ public class TodoController {
     @Autowired
     TodoService todoService;
 
+    @Autowired
+    Authentication authentication;
+
     @PostMapping("/save")
     public TodoResponse saveTodo(@ApiParam(value = "Todo save object", required = true) @Valid @RequestBody TodoRequest req, HttpServletResponse httpRes){
         TodoResponse res = null;
-        
+
         if(null == req.getTodo()){
             res = new TodoResponse(HttpServletResponse.SC_BAD_REQUEST, Error.ERR998, null);
         }else{
             try{
+                req.getTodo().setUsername(authentication.getUsername());
                 res = new TodoResponse(HttpServletResponse.SC_OK, null, todoService.saveTodo(req.getTodo()));
 
             }catch (Exception e){
