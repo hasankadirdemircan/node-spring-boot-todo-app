@@ -139,10 +139,11 @@ app.locals.hasRole = function(user, roles) {
  * Primary app routes.
  */
 app.get('/', passportConfig.isAuthenticated, todoController.getTodos);
+
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 
-
+app.get('/logout', passportConfig.isAuthenticated, userController.logout);
 /**
  * Error Handler.
  */
