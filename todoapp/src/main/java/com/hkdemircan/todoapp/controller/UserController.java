@@ -34,7 +34,7 @@ public class UserController {
                     @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
             }
     )
-    @PostMapping("/sign-up")
+    @PostMapping
     public UserResponse createUser(@ApiParam(value = "User create object", required = true) @Valid @RequestBody UserRequest req, HttpServletResponse httpRes){
         UserResponse res = null;
 

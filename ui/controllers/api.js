@@ -65,3 +65,24 @@ exports.login = (username, password, cb) => {
       return cb(data);
     });
   };
+
+  /**
+   * POST /createUser
+   */
+  exports.postUser = (me, user, cb)=>{
+    user.role = 'admin';
+    const data ={
+      user: user
+    };
+    console.info('request data --> ', data);
+    const options = {
+      url: `${process.env.API_URL}${process.env.API_USER}`,
+      method: 'POST',
+      json: data
+    };
+
+    request(options, function (error, response, data) {
+      console.info('response data-->', data);
+      return cb(data);
+    });
+  };

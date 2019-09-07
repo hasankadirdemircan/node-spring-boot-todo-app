@@ -30,6 +30,50 @@ exports.logout = (req, res) =>{
     res.redirect('/');
   })
 }
+
+/**
+ * GET /createAccount
+ *
+ */
+exports.getNewUser = (req, res) => {
+  res.render('account/signup', {
+    title: 'Signup'
+  });
+}
+
+/**
+ * POST /createAccount
+ *
+ */
+exports.postNewUser = (req, res) => {
+  const me = req.user;
+  const user = req.body;
+
+
+  api.postUser(me, user, function (data) {
+    if (data) {
+      if (data.error) {
+
+        req.session.new_user = user;
+        req.flash('errors', {msg: `${data.error}`});
+        return res.redirect('/login');
+
+      } else if (data.user) {
+
+        req.session.new_user = {};
+        req.flash('info', {msg: '# has been created.', params: [data.user.username]});
+        return res.redirect('/');
+
+      }
+    } else {
+
+      req.session.new_user = user;
+      req.flash('errors', {msg: 'An unknown error has occurred. Please contact us.'});
+      return res.redirect('/');
+
+    }
+  });
+}
 /**
  * POST /login
  * Sign in using username and password.

@@ -16,7 +16,6 @@ exports.getTodos = (req, res) => {
             req.flash('errors', {msg: data.error});
             return res.render('todo/todos');
           }else{
-            console.info('hellllllllllllllllllll', data.todos)
             return res.render('todo/todos', {title: 'Todos', todos: data.todos});
           }
         }

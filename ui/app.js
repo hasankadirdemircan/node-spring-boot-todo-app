@@ -143,7 +143,11 @@ app.get('/', passportConfig.isAuthenticated, todoController.getTodos);
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 
+app.get('/signup', userController.getNewUser);
+app.post('/signup', userController.postNewUser);
+
 app.get('/logout', passportConfig.isAuthenticated, userController.logout);
+
 /**
  * Error Handler.
  */
