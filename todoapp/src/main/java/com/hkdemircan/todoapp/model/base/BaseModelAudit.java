@@ -1,5 +1,7 @@
 package com.hkdemircan.todoapp.model.base;
 
+import org.springframework.security.core.context.SecurityContextHolder;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -20,7 +22,7 @@ public class BaseModelAudit extends BaseModel {
 
     @PrePersist
     public void prePersist() {
-        this.createBy = "admin";//SecurityContextHolder.getContext().getAuthentication().getName(); jwt ekledikten sonra.
+        this.createBy = SecurityContextHolder.getContext().getAuthentication().getName();
         this.createDate = new Date();
     }
 

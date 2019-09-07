@@ -8,6 +8,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Configuration
 public class Mapper {
 
@@ -95,5 +98,28 @@ public class Mapper {
         //BeanUtils.copyProperties(model, dto);
 
         return dto;
+    }
+
+    /**
+     *  list to do
+     */
+    public List<TodoDto> model2DtoTodos(List<Todo> modelList){
+        List<TodoDto> dtoList = new ArrayList<>();
+        if(!ListUtil.isNullOrEmpty(modelList)){
+            for(Todo model : modelList){
+                dtoList.add(model2Dto(model));
+            }
+        }
+        return dtoList;
+    }
+
+    public List<Todo> dto2ModelTodos(List<TodoDto> dtoList){
+        List<Todo> modelList = new ArrayList<>();
+        if(!ListUtil.isNullOrEmpty(dtoList)){
+            for(TodoDto dto : dtoList){
+                modelList.add(dto2Model(dto));
+            }
+        }
+        return modelList;
     }
 }

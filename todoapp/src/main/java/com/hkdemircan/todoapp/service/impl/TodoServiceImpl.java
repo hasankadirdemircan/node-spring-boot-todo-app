@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class TodoServiceImpl implements TodoService {
@@ -26,4 +28,10 @@ public class TodoServiceImpl implements TodoService {
 
         return mapper.model2Dto(todoRepository.save(todo));
     }
+
+    @Override
+    public List<TodoDto> getActiveTodos(String username, String status) {
+        return mapper.model2DtoTodos(todoRepository.findAllByCreateByAndActive(username, status));
+    }
+
 }
