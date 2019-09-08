@@ -61,7 +61,7 @@ exports.postNewUser = (req, res) => {
       } else if (data.user) {
 
         req.session.new_user = {};
-        req.flash('info', {msg: '# has been created.', params: [data.user.username]});
+        req.flash('info', {msg: 'has been created', params: [data.user.username]});
         return res.redirect('/');
 
       }

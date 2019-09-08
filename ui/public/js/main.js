@@ -1,6 +1,7 @@
 /* eslint-env jquery, browser */
+
 $(document).ready(() => {
-
-  // Place JavaScript code here...
-
+  $('#createDate').datepicker({
+    uiLibrary: 'bootstrap4'
+  });
 });

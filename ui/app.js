@@ -132,6 +132,16 @@ app.use('/js/lib', express.static(path.join(__dirname, 'node_modules/bootstrap/d
 app.use('/js/lib', express.static(path.join(__dirname, 'node_modules/jquery/dist'), { maxAge: 31557600000 }));
 app.use('/webfonts', express.static(path.join(__dirname, 'node_modules/@fortawesome/fontawesome-free/webfonts'), { maxAge: 31557600000 }));
 
+
+app.locals.message = function(msg, params = []) {
+  if (params && params.length > 0) {
+    for (i=0; i < params.length; i++) {
+      msg = msg.replace('#', params[i]);
+    }
+  }
+  return msg;
+};
+
 app.locals.hasRole = function(user, roles) {
   return util.hasRole(user, roles);
 };

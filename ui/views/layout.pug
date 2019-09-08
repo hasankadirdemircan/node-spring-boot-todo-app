@@ -9,15 +9,17 @@ html
     title #{title} - TODO APP
     link(rel='shortcut icon', href='/favicon.png')
     link(rel='stylesheet', href='/css/main.css')
-    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.14.2/bootstrap-table.min.css')
-    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.14.2/extensions/filter-control/bootstrap-table-filter-control.min.css')
-    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/gijgo/1.9.11/combined/css/gijgo.min.css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.15.4/bootstrap-table.min.css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.15.4/extensions/filter-control/bootstrap-table-filter-control.min.css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/gijgo/1.9.13/combined/css/gijgo.min.css')
+
     block head
 
   body
     include partials/header
 
     .container
+      include partials/flash
       block content
 
     include partials/footer
@@ -26,14 +28,15 @@ html
     script(src='/js/lib/popper.min.js')
     script(src='/js/lib/bootstrap.min.js')
     script(src='/js/lib/tableExport.min.js')
-    script(src='/js/main.js')
+
 
     script(src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.15.4/bootstrap-table.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.15.4/extensions/filter-control/bootstrap-table-filter-control.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.15.4/extensions/export/bootstrap-table-export.min.js')
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/gijgo/1.9.11/combined/js/gijgo.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/gijgo/1.9.13/combined/js/gijgo.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.4.10/cleave.min.js')
     script(src='/js/main.js')
+
     // Google Analytics: change UA-XXXXX-X to be your site's ID
     script.
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

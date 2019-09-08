@@ -5,9 +5,12 @@ block content
   div.row
     div.col-md-12
       h3 Todo
-
-      form(id='todos', method='POST')
+      br
+      br
+      br
+      form(id='todo', method='POST')
         input(type='hidden', name='_csrf', value=_csrf)
+        input(type='hidden', name='__id', id="__id" value=todo.__id || todo.id)
         div.row
           div.col-md-4
             .form-group.row
@@ -18,13 +21,13 @@ block content
                   option(value='2', selected= todo.contractType == 2) 2
                   option(value='3', selected= todo.contractType == 3) 3
             .form-group.row
-              label.col-md-6.col-form-label.font-weight-bold(for='workingDate') Date
+              label.col-md-6.col-form-label.font-weight-bold(for='createDate') Date
               .col-md-6
                 input.form-control(type='text', name='createDate', id='createDate', placeholder='dd/mm/yyyy', value=todo.createDate)
             .form-group.row
-              label.col-md-6.col-form-label.font-weight-bold(for='periodEndDate') Comment
+              label.col-md-6.col-form-label.font-weight-bold(for='todo') todo
               .col-md-6
-                textarea(id="todo" name="todo" placeholder="todo", value=todo.todo)
+                textarea.form-control(id="todo" name="todo" placeholder="todo", value=todo.todo)
         br
         div.row
           div.col-md-1.text-left
