@@ -139,6 +139,8 @@ app.locals.hasRole = function(user, roles) {
  * Primary app routes.
  */
 app.get('/', passportConfig.isAuthenticated, todoController.getTodos);
+app.get('/todo', passportConfig.isAuthenticated, todoController.getSaveTodo);
+app.post('/todo',passportConfig.isAuthenticated, todoController.postSaveTodo);
 
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);

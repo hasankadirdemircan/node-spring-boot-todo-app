@@ -1,0 +1,33 @@
+extends ../layout
+
+block content
+  br
+  div.row
+    div.col-md-12
+      h3 Todo
+
+      form(id='todos', method='POST')
+        input(type='hidden', name='_csrf', value=_csrf)
+        div.row
+          div.col-md-4
+            .form-group.row
+              label.col-md-6.col-form-label.font-weight-bold(for='todoPriorty') Priority
+              .col-md-6
+                select.form-control(name='todoPriorty', id='todoPriorty', placeholder='todo Priorty')
+                  option(value='1', selected= todo.contractType == 1) 1
+                  option(value='2', selected= todo.contractType == 2) 2
+                  option(value='3', selected= todo.contractType == 3) 3
+            .form-group.row
+              label.col-md-6.col-form-label.font-weight-bold(for='workingDate') Date
+              .col-md-6
+                input.form-control(type='text', name='createDate', id='createDate', placeholder='dd/mm/yyyy', value=todo.createDate)
+            .form-group.row
+              label.col-md-6.col-form-label.font-weight-bold(for='periodEndDate') Comment
+              .col-md-6
+                textarea(id="todo" name="todo" placeholder="todo", value=todo.todo)
+        br
+        div.row
+          div.col-md-1.text-left
+            .form-group.row
+              button.btn.btn-success.btn-block(type='submit', name='action', value='save')
+                  | Save

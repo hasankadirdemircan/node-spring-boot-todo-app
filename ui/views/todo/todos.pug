@@ -22,5 +22,7 @@ block content
                     td=todo.createBy
                     td=todo.createDate
                     td=todo.username
-                    td=todo.todo
+                      td
+                        a(href='/todo?id=' + todo.id)
+                          = todo.todo
 

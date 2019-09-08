@@ -67,7 +67,8 @@ exports.login = (username, password, cb) => {
   };
 
   /**
-   * POST /createUser
+   *  create user
+   * POST /user
    */
   exports.postUser = (me, user, cb)=>{
     user.role = 'admin';
@@ -86,3 +87,30 @@ exports.login = (username, password, cb) => {
       return cb(data);
     });
   };
+
+  /**
+   * save todo
+   * POST /todo
+   */
+exports.saveTodo = (me, todo, cb) => {
+    todo.active='X';
+    const data = {
+      todo: todo
+    };
+    console.info('request data --> ', data);
+
+
+  const options = {
+    url: `${process.env.API_URL}${process.env.API_TODO}`,
+    method: 'POST',
+    json: data,
+    headers: {
+      Authorization: me.authorization
+    }
+  };
+
+  request(options, function(err, response, data){
+    console.info('response data --> ', data);
+    return cb(data);
+  });
+};
