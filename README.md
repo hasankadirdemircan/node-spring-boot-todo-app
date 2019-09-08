@@ -34,3 +34,15 @@
     <img alt="Techs" title="Techs" src="https://user-images.githubusercontent.com/34090058/64479970-d7290e80-d1c7-11e9-9abe-f2be4a53347c.png"width="700">
   </a>
 </p>
+
+<p align="center">
+  <a href="#">
+    <img alt="Techs" title="Techs" src="https://user-images.githubusercontent.com/34090058/64492643-a2c45980-d27e-11e9-8f62-fa61e3e54c62.png"width="400">
+  </a>
+</p>
+
+<p align="center">
+  <a href="#">
+    <img alt="Techs" title="Techs" src="https://user-images.githubusercontent.com/34090058/64492649-b7a0ed00-d27e-11e9-8f68-32015df89ddb.png"width="700">
+  </a>
+</p>
