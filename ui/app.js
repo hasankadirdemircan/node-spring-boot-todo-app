@@ -150,6 +150,7 @@ app.locals.hasRole = function(user, roles) {
  */
 app.get('/', passportConfig.isAuthenticated, todoController.getTodos);
 app.get('/todo', passportConfig.isAuthenticated, todoController.getTodos);
+app.post('/todo', passportConfig.isAuthenticated, todoController.putTodo);
 
 app.get('/todo/new', passportConfig.isAuthenticated, todoController.getSaveTodo);
 app.post('/todo/new',passportConfig.isAuthenticated, todoController.postSaveTodo);

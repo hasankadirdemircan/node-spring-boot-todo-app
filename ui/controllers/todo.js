@@ -65,3 +65,26 @@ exports.postSaveTodo = (req, res) => {
     }
   })
 }
+
+
+exports.putTodo = (req, res) => {
+  const me = req.user;
+  const todo = req.body;
+  console.info('putttttttttttttttt data --> ');
+  req.session.todo = todo;
+
+  api.putTodo(me, todo, function(data){
+    if(data){
+      if(data.error){
+        req.flash('errors', {msg: `${data.error}`});
+        return res.redirect('todo/todo', {title: 'Todo', todo: req.session.todo || {}});
+      }else if(data.todo){
+        req.flash('info', {msg: '# has been updated.', params: [data.todo.todoId]});
+        return res.redirect('/todo?id=' + data.todo.id);
+      }
+    }else{
+      req.flash('errors', {msg: 'An unknown error has occurred. Please contact us.'});
+      return res.redirect('todo/todo', {title: 'Todo', todo: req.session.todo || {}});
+    }
+  });
+};

@@ -120,11 +120,11 @@ exports.saveTodo = (me, todo, cb) => {
  * GET  /{id}
  */
 exports.getTodo = (me, todoId, cb) => {
-  var data = {};
+  const data = {};
 
   console.info('request data-->', data);
 
-  var options = {
+  const options = {
     url: `${process.env.API_URL}${process.env.API_TODO}/${todoId}`,
     method: 'GET',
     json: data,
@@ -138,3 +138,27 @@ exports.getTodo = (me, todoId, cb) => {
     return cb(data);
   });
 };
+
+/**
+ * PUT /
+ */
+exports.putTodo = (me, todo, cb) => {
+  const data = {
+    todo: todo
+  };
+
+  console.info('request data --> ', data);
+
+  const options = {
+    url: `${process.env.API_URL}${process.env.API_TODO}`,
+    method: 'PUT',
+    json: data,
+    headers: {
+      Authorization: me.authorization
+    }
+  };
+  request(options, function (error, response, data) {
+    console.info('response data-->', data);
+    return cb(data);
+  });
+}

@@ -35,3 +35,6 @@ block content
             .form-group.row
               button.btn.btn-success.btn-block(type='submit', name='action', value='save')
                   | Save
+              if todo.todo
+                button.btn.btn-warning.btn-block(type='submit', name='action', value='delete')
+                  | DELETE
