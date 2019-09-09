@@ -27,7 +27,8 @@ block content
             .form-group.row
               label.col-md-6.col-form-label.font-weight-bold(for='todo') todo
               .col-md-6
-                textarea.form-control(id="todo" name="todo" placeholder="todo", value=todo.todo)
+                textarea.form-control(type='text', id='todo', name='todo' placeholder='todo')
+                  | #{todo.todo}
         br
         div.row
           div.col-md-1.text-left

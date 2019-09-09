@@ -8,6 +8,18 @@ exports.getTodos = (req, res) => {
     const todoId = req.query.id || null;
     if(todoId != null){
       //TODO: todoId'ye göre veri çek.
+      console.info('rendeeerrrrrr data --> ');
+      api.getTodo(req.user, todoId, function(data){
+        console.info('responseeee -->', data);
+        if(data){
+          if(data.error){
+            req.flash('errors', {msg:data.error});
+            return res.render('todo/todos', {title: 'Todos'});
+          }else{
+            return res.render('todo/todo', {title: 'Todo', todo: data.todo || {}});
+          }
+        }
+      })
     }else{
       req.session.todo = {};
       api.getTodos(req.user, function (data) {
@@ -48,7 +60,7 @@ exports.postSaveTodo = (req, res) => {
       }else if (data.todo) {
         console.info('rendeeerrrrrr data --> ', data);
         req.flash('info', {msg: 'has been created.', params: [data.todo]});
-        return res.render('todo/todos', {title: 'Todos', todos: data.todo});
+        return res.redirect('/todo?id=' + data.todo.id);
       }
     }
   })

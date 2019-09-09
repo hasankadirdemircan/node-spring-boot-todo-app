@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface TodoRepository extends JpaRepository<Todo, Integer>{
     List<Todo> findAllByCreateByAndActive(String username, String status);
+    Todo findFirstById(Integer id);
 }

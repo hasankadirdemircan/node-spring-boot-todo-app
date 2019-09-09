@@ -114,3 +114,27 @@ exports.saveTodo = (me, todo, cb) => {
     return cb(data);
   });
 };
+
+/**
+ * getTodo
+ * GET  /{id}
+ */
+exports.getTodo = (me, todoId, cb) => {
+  var data = {};
+
+  console.info('request data-->', data);
+
+  var options = {
+    url: `${process.env.API_URL}${process.env.API_TODO}/${todoId}`,
+    method: 'GET',
+    json: data,
+    headers: {
+      Authorization: me.authorization
+    }
+  };
+
+  request(options, function (error, response, data) {
+    console.info('response data-->', data);
+    return cb(data);
+  });
+};

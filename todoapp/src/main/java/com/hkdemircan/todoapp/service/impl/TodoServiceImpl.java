@@ -34,4 +34,9 @@ public class TodoServiceImpl implements TodoService {
         return mapper.model2DtoTodos(todoRepository.findAllByCreateByAndActive(username, status));
     }
 
+    @Override
+    public TodoDto getTodo(Integer id) {
+        return mapper.model2Dto(todoRepository.findFirstById(id));
+    }
+
 }
