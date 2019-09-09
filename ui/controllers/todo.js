@@ -68,8 +68,11 @@ exports.postSaveTodo = (req, res) => {
 
 
 exports.putTodo = (req, res) => {
+  const todoId = req.query.id || null;
   const me = req.user;
   const todo = req.body;
+  todo.id = todoId;
+  todo.active = 'X'
   console.info('putttttttttttttttt data --> ');
   req.session.todo = todo;
 

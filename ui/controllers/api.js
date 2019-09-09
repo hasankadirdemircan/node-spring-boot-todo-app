@@ -150,7 +150,7 @@ exports.putTodo = (me, todo, cb) => {
   console.info('request data --> ', data);
 
   const options = {
-    url: `${process.env.API_URL}${process.env.API_TODO}`,
+    url: `${process.env.API_URL}${process.env.API_TODO}/${todo.id}`,
     method: 'PUT',
     json: data,
     headers: {

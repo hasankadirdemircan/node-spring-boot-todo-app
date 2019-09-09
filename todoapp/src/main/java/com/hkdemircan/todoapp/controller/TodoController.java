@@ -75,4 +75,18 @@ public class TodoController {
         httpRes.setStatus(res.getStatusCode());
         return res;
     }
+
+    @PutMapping("/{id}")
+    public TodoResponse getTodo(@PathVariable(value = "id") Integer id, @Valid @RequestBody TodoRequest req, HttpServletResponse httpRes){
+        TodoResponse res = null;
+
+        try{
+            res = new TodoResponse(HttpServletResponse.SC_OK, null, todoService.saveTodo(req.getTodo()));
+        }catch (Exception e){
+            e.printStackTrace();
+            res = new TodoResponse(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,  Error.ERR000, null);
+        }
+        httpRes.setStatus(res.getStatusCode());
+        return res;
+    }
 }
