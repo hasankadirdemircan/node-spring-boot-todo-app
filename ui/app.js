@@ -30,8 +30,15 @@ const util = require('./utils/util');
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
  */
+ // dotenv.load({ path: './env/dev.env' });
+ const environment = process.env.NODE_ENV || 'production';
+ if (environment && (environment == 'dev' || environment == 'development')) {
   dotenv.load({ path: './env/dev.env' });
-
+} else if(environment && (environment == 'docker')){
+  dotenv.load({ path: './env/docker.env' });
+}else {
+  dotenv.load({ path: './env/dev.env' });
+}
 
 /**
  * Controllers (route handlers).

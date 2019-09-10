@@ -1,0 +1,17 @@
+#pull base image
+FROM maven:3.6.0-jdk-8-alpine
+
+
+COPY . /home/app/api
+WORKDIR /home/app/api
+RUN ["mvn", "install", "-Dmaven.test.skip=true"]
+
+#maintainer
+MAINTAINER hkdemircan06@gmail.com
+
+
+# Run the jar file 
+ENTRYPOINT ["java","-jar","/home/app/api/target/todoapp-0.0.1-SNAPSHOT.jar","--spring.profiles.active=docker"]
+
+EXPOSE 8080:8080
+

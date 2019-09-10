@@ -66,7 +66,9 @@ exports.postSaveTodo = (req, res) => {
   })
 }
 
-
+/**
+ * PUT
+ */
 exports.putTodo = (req, res) => {
   const todoId = req.query.id || null;
   const me = req.user;
