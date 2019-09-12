@@ -10,8 +10,8 @@ RUN ["mvn", "install", "-Dmaven.test.skip=true"]
 MAINTAINER hkdemircan06@gmail.com
 
 
+EXPOSE 8080:8080
+
 # Run the jar file 
 ENTRYPOINT ["java","-jar","/home/app/api/target/todoapp-0.0.1-SNAPSHOT.jar","--spring.profiles.active=docker"]
-
-EXPOSE 8080:8080
 
