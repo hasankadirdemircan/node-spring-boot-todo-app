@@ -92,4 +92,19 @@ public class TodoController {
         httpRes.setStatus(res.getStatusCode());
         return res;
     }
+    
+    @DeleteMapping("/{id}")
+    public TodoResponse deleteTodo(@PathVariable(value = "id") Integer id, HttpServletResponse httpRes){
+        TodoResponse res = null;
+
+        try{
+            res = new TodoResponse(HttpServletResponse.SC_OK, null, todoService.deleteTodo(id));
+        }catch (Exception e){
+            e.printStackTrace();
+            res = new TodoResponse(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,  Error.ERR000, null);
+        }
+        httpRes.setStatus(res.getStatusCode());
+        return res;
+    }
+
 }

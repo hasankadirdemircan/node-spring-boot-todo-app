@@ -162,3 +162,24 @@ exports.putTodo = (me, todo, cb) => {
     return cb(data);
   });
 }
+
+/**
+ * DELETE /
+ */
+exports.deleteTodo = (me, todoId, cb) => {
+  const data = {};
+  console.info('request data --> ', data);
+
+  const options = {
+    url: `${process.env.API_URL}${process.env.API_TODO}/${todoId}`,
+    method: 'DELETE',
+    json: data,
+    headers: {
+      Authorization: me.authorization
+    }
+  };
+  request(options, function (error, response, data) {
+    console.info('response data-->', data);
+    return cb(data);
+  });
+}

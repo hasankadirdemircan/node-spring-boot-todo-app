@@ -39,4 +39,11 @@ public class TodoServiceImpl implements TodoService {
         return mapper.model2Dto(todoRepository.findFirstById(id));
     }
 
+	@Override
+	public TodoDto deleteTodo(Integer id) {
+		Todo todo = todoRepository.findFirstById(id);
+		todoRepository.delete(todo);
+		return mapper.model2Dto(todo);
+	}
+
 }

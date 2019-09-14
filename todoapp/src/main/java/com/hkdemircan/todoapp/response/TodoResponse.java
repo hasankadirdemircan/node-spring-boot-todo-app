@@ -7,7 +7,7 @@ import com.hkdemircan.todoapp.enums.Error;
 import com.hkdemircan.todoapp.response.base.BaseResponse;
 
 public class TodoResponse extends BaseResponse {
-
+	  
     public TodoResponse(int statusCode, Error error, TodoDto todo) {
         super(statusCode, error);
         this.todo = todo;

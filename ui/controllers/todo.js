@@ -50,20 +50,21 @@ exports.getSaveTodo = (req, res) => {
 exports.postSaveTodo = (req, res) => {
   const me = req.user;
   const todo = req.body;
-
+  console.info('heyyyyyyyyy data --> ', req.query.action);
   req.session.todo = todo;
-
-  api.saveTodo(me, todo, function(data){
-    if(data){
-      if(data.error){
-        req.flash('errors', {msg: `${data.error}`});
-      }else if (data.todo) {
-        console.info('rendeeerrrrrr data --> ', data);
-        req.flash('info', {msg: 'has been created.', params: [data.todo]});
-        return res.redirect('/todo?id=' + data.todo.id);
+  
+    api.saveTodo(me, todo, function(data){
+      if(data){
+        if(data.error){
+          req.flash('errors', {msg: `${data.error}`});
+        }else if (data.todo) {
+          console.info('rendeeerrrrrr data --> ', data);
+          req.flash('info', {msg: 'has been created.', params: [data.todo]});
+          return res.redirect('/todo?id=' + data.todo.id);
+        }
       }
-    }
-  })
+    });
+  
 }
 
 /**
@@ -75,9 +76,23 @@ exports.putTodo = (req, res) => {
   const todo = req.body;
   todo.id = todoId;
   todo.active = 'X'
-  console.info('putttttttttttttttt data --> ');
+  console.info('actionnn data --> ', req.query.action);
   req.session.todo = todo;
-
+  if ('save' != req.query.action) {
+    console.info('deleteeee data --> ');
+    const todoId = req.query.id || null;
+    api.deleteTodo(me, todoId, function(data){
+      if(data){
+        if(data.error){
+          req.flash('errors', {msg: `${data.error}`});
+        }else if(data.todo){
+          console.info('rendeeerrrrrr data --> ', data);
+          req.flash('info', {msg: 'has been deleted.', params: [data.todo]});
+          return res.redirect('/');
+        }
+      }
+    })
+  }else{
   api.putTodo(me, todo, function(data){
     if(data){
       if(data.error){
@@ -92,4 +107,5 @@ exports.putTodo = (req, res) => {
       return res.redirect('todo/todo', {title: 'Todo', todo: req.session.todo || {}});
     }
   });
+}
 };

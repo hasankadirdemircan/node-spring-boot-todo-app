@@ -9,4 +9,5 @@ public interface TodoService {
     TodoDto saveTodo(TodoDto todoDto);
     List<TodoDto> getActiveTodos(String username, String status);
     TodoDto getTodo(Integer id);
+    TodoDto deleteTodo(Integer id);
 }
