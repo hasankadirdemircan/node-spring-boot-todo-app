@@ -2,6 +2,7 @@ package com.hkdemircan.todoapp.controller;
 
 
 import com.hkdemircan.todoapp.component.Authentication;
+import com.hkdemircan.todoapp.dto.TodoDto;
 import com.hkdemircan.todoapp.enums.Error;
 import com.hkdemircan.todoapp.request.TodoRequest;
 import com.hkdemircan.todoapp.request.UserRequest;
@@ -81,7 +82,9 @@ public class TodoController {
         TodoResponse res = null;
 
         try{
-            res = new TodoResponse(HttpServletResponse.SC_OK, null, todoService.saveTodo(req.getTodo()));
+        	TodoDto todoDto = todoService.getTodo(id);
+        	todoDto.setTodo(req.getTodo().getTodo());
+            res = new TodoResponse(HttpServletResponse.SC_OK, null, todoService.saveTodo(todoDto));
         }catch (Exception e){
             e.printStackTrace();
             res = new TodoResponse(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,  Error.ERR000, null);
