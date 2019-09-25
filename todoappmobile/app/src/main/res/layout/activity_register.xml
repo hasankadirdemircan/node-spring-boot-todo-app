@@ -4,12 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".RegisterActivity"
     android:layout_gravity="center|top"
     android:background="#ffffff"
-    android:orientation="vertical"
-    tools:context=".LoginActivity">
-
-
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/loginImageView"
@@ -48,16 +46,22 @@
             android:hint="Password"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
-    <TextView
-        android:id="@+id/registerButton"
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="right"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="15dp"
-        android:text="I wanna register"
-        android:textStyle="bold"
-        ></TextView>
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/confirmPasswordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:drawableStart="@drawable/ic_lock_outline_black_24dp"
+            android:hint="Confirm Password"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <Button
         android:id="@+id/loginButton"
         android:layout_width="match_parent"
@@ -66,7 +70,7 @@
         android:layout_marginRight="40dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/primary_button"
-        android:text="Sıgn In"
+        android:text="Sıgn Up"
         android:textColor="#ffffff" />
 
 
