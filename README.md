@@ -14,6 +14,12 @@
     <img alt="Techs" title="Techs" src="https://user-images.githubusercontent.com/34090058/64065075-889cd280-cc11-11e9-8a48-3ffa999e4866.png"width="300">
   </a>
 </p>
+<p align="center">
+  <a href="#">
+    <img alt="Techs" title="Techs" src="https://user-images.githubusercontent.com/34090058/65626959-05378c80-dfd7-11e9-9fb9-0dea5fc0f219.jpeg"width="300">
+  </a>
+</p>
+
 
 ## Views <br>
 
