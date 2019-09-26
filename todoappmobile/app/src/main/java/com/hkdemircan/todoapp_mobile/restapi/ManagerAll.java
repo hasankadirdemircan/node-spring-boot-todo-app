@@ -1,5 +1,6 @@
 package com.hkdemircan.todoapp_mobile.restapi;
 
+import com.hkdemircan.todoapp_mobile.model.LoginUser;
 import com.hkdemircan.todoapp_mobile.model.UserCreate;
 
 import retrofit2.Call;
@@ -16,6 +17,14 @@ public class ManagerAll extends BaseManager{
      */
     public Call<Void> registerUser(UserCreate userCreate){
         Call call = getRestApiClient().registerUser(userCreate);
+        return call;
+    }
+
+    /*
+    Login and token take
+     */
+    public Call<Void> loginUser(LoginUser loginUser){
+        Call call = getRestApiClient().loginUser(loginUser);
         return call;
     }
 }

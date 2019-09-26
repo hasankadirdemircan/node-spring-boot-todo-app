@@ -1,11 +1,10 @@
 package com.hkdemircan.todoapp_mobile.model;
 
-public class Login {
-
+public class LoginUser {
     private String username;
     private String password;
 
-    public Login(String username, String password) {
+    public LoginUser(String username, String password) {
         this.username = username;
         this.password = password;
     }
