@@ -7,12 +7,12 @@ import com.hkdemircan.todoapp.response.base.BaseResponse;
 
 public class UserResponse extends BaseResponse {
 
+	private static final long serialVersionUID = -774947718002386439L;
 
-    public UserResponse(int statusCode, Error error, UserDto user) {
+	public UserResponse(int statusCode, Error error, UserDto user) {
         super(statusCode, error);
         this.user = user;
     }
-
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private UserDto user;

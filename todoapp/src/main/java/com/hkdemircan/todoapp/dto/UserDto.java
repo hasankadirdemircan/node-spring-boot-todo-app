@@ -12,7 +12,7 @@ public class UserDto extends BaseDtoAudit {
 
     @ApiModelProperty(notes = "The database generated username")
     private String username;
-    private String password;
+    private String password; 	
     private String role;
 
     public Integer getId() {
