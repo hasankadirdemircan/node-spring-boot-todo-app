@@ -1,9 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateTodoActivity">
+    tools:context=".CreateTodoActivity"
+    android:orientation="vertical"
+    android:background="#DCD7DB"
+    android:padding="20dp"
+    android:layout_gravity="center">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:id="@+id/todoHeaderEditText"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="30dp"
+        android:background="#ffff"
+        android:hint="Header"></EditText>
+
+
+    <EditText
+        android:id="@+id/todoContentEditText"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:inputType="text|textMultiLine"
+        android:gravity="top"
+        android:background="#ffff"
+        android:lines="8"
+        android:maxLines="10"
+        android:scrollbars="vertical"
+        android:hint="Content"/>
+
+    <Button
+        android:id="@+id/saveTodoButton"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/save_button"
+        android:text="Save"
+        android:textColor="#008001"/>
+
+</LinearLayout>
