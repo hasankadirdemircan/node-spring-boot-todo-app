@@ -24,16 +24,32 @@ public class LoginActivity extends AppCompatActivity {
     TextView registerTextView;
     EditText usernameEditText, passwordEditText;
     Button loginButton;
+
+    //session durumu
+    SessionManager session;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
         define();
+        if(sessionControll()){
+            Intent ıntent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(ıntent);
+            return;
+        }
         registerListener();
         loginButtonClickListener();
     }
 
+    private boolean sessionControll(){
+        if(session.isLoggedIn()){
+            String asd ="";
+        }
+        return ((session.isLoggedIn()) ? true : false);
+    }
     private void define(){
         registerTextView = findViewById(R.id.registerTextView);
 
@@ -41,6 +57,9 @@ public class LoginActivity extends AppCompatActivity {
         passwordEditText = findViewById(R.id.passwordEditText);
 
         loginButton = findViewById(R.id.loginButton);
+
+        // Session Manager tanımladık.
+        session = new SessionManager(getApplicationContext());
     }
 
     private void registerListener(){
@@ -58,7 +77,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(checkEmptyEditText(usernameEditText.getText().toString().trim(), passwordEditText.getText().toString().trim())){
-                    LoginUser loginUser = new LoginUser(usernameEditText.getText().toString().trim(), passwordEditText.getText().toString().trim());
+                    final String username = usernameEditText.getText().toString().trim();
+                    final String password = passwordEditText.getText().toString().trim();
+                    LoginUser loginUser = new LoginUser(username, password);
                     Call<Void> loginUserCall = ManagerAll.getInstance().loginUser(loginUser);
                     loginUserCall.enqueue(new Callback<Void>() {
                         @Override
@@ -66,6 +87,12 @@ public class LoginActivity extends AppCompatActivity {
                             if(response.isSuccessful()){
                                 String token = response.headers().get("Authorization");
                                 Toast.makeText(getApplicationContext(),"Giriş Başarılı",Toast.LENGTH_LONG).show();
+                                //giriş başarılı ise Session'a verilerimizi yolladık.
+                                session.createLoginSession(username, password, token);
+                                //sonraki sayfaya yönlendirdik.
+                                Intent ıntent = new Intent(LoginActivity.this, MainActivity.class);
+                                startActivity(ıntent);
+
                             }else{
                                 Toast.makeText(getApplicationContext(),"Bilgiler Yanlış",Toast.LENGTH_LONG).show();
                             }
