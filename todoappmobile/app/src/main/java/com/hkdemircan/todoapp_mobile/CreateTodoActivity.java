@@ -43,7 +43,7 @@ public class CreateTodoActivity extends AppCompatActivity {
             public void onClick(View v) {
                String todoHeader = todoHeaderEditText.getText().toString();
                String todoContent = todoContentEditText.getText().toString();
-               if(!Util.isNullOrEmpty(todoHeader) && Util.isNullOrEmpty(todoContent)){
+               if(!Util.isNullOrEmpty(todoHeader) && !Util.isNullOrEmpty(todoContent)){
                    HashMap<String, String> user = session.getUserDetails();
                    //session token and username
                    String token = user.get((SessionManager.KEY_TOKEN));
