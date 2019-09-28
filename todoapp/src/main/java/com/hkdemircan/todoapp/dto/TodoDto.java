@@ -11,6 +11,7 @@ public class TodoDto extends BaseDtoAudit {
     private Integer id;
 
     private String username;
+    private String header;
     private String todo;
     private String active;
 
@@ -30,7 +31,15 @@ public class TodoDto extends BaseDtoAudit {
         this.username = username;
     }
 
-    public String getTodo() {
+    public String getHeader() {
+		return header;
+	}
+
+	public void setHeader(String header) {
+		this.header = header;
+	}
+
+	public String getTodo() {
         return todo;
     }
 
