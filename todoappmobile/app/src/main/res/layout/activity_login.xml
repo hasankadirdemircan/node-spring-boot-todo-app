@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="@drawable/gradient"
     android:orientation="vertical"
     tools:context=".LoginActivity">
 
@@ -14,11 +14,13 @@
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:layout_marginTop="80dp"
-        android:background="@drawable/todo_icon" />
+        android:background="@drawable/task" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:textColorHint="#F6F6F6"
+        android:layout_marginTop="30dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/usernameEditText"
@@ -26,14 +28,19 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
-            android:drawableStart="@drawable/ic_mail_outline_black_24dp"
+
+            android:drawableStart="@drawable/ic_email_black_24dp"
+            android:ems="10"
             android:hint="Email"
+
+            android:background="#11000000"
             android:textSize="20sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:textColorHint="#F6F6F6">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordEditText"
@@ -42,7 +49,9 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:drawableStart="@drawable/ic_lock_outline_black_24dp"
+            android:ems="10"
             android:hint="Password"
+            android:background="#11000000"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -55,8 +64,10 @@
         android:layout_marginRight="15dp"
         android:text="I wanna register"
         android:textStyle="bold"
+        android:textColor="@color/colorAccent"
         ></TextView>
-    
+
+
     <Button
         android:id="@+id/loginButton"
         android:layout_width="match_parent"
