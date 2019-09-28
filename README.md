@@ -56,6 +56,6 @@
 ## Views (Mobile) <br>
 <p align="center">
   <a href="#">
-    <img alt="Techs" title="Techs" src="https://user-images.githubusercontent.com/34090058/65822853-a92d6c00-e253-11e9-8aa6-18a82e5ed3c0.png"width="700">
+    <img alt="Techs" title="Techs" src="https://user-images.githubusercontent.com/34090058/65822853-a92d6c00-e253-11e9-8aa6-18a82e5ed3c0.png"width="200">
   </a>
 </p>
