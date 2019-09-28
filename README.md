@@ -21,7 +21,7 @@
 </p>
 
 
-## Views <br>
+## Views (WEB) <br>
 
 <p align="center">
   <a href="#">
@@ -50,5 +50,12 @@
 <p align="center">
   <a href="#">
     <img alt="Techs" title="Techs" src="https://user-images.githubusercontent.com/34090058/64492649-b7a0ed00-d27e-11e9-8f68-32015df89ddb.png"width="700">
+  </a>
+</p>
+
+## Views (Mobile) <br>
+<p align="center">
+  <a href="#">
+    <img alt="Techs" title="Techs" src="https://user-images.githubusercontent.com/34090058/65822853-a92d6c00-e253-11e9-8aa6-18a82e5ed3c0.png"width="700">
   </a>
 </p>
