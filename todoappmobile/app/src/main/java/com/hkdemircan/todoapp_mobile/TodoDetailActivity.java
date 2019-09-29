@@ -2,6 +2,7 @@ package com.hkdemircan.todoapp_mobile;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hkdemircan.todoapp_mobile.model.GetOneTodo;
+import com.hkdemircan.todoapp_mobile.model.Todo;
+import com.hkdemircan.todoapp_mobile.model.TodoCreate;
 import com.hkdemircan.todoapp_mobile.restapi.ManagerAll;
 
 import java.util.ArrayList;
@@ -42,8 +45,63 @@ public class TodoDetailActivity extends AppCompatActivity {
         define();
         priortySpinnerProcess();
         getTodo();
+        updateTodoButtonListener();
+        deleteTodoButtonListener();
     }
 
+    private void deleteTodoButtonListener(){
+        deleteTodoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Call<Void> deleteTodoCall = ManagerAll.getInstance().deleteTodo(getToken(), bundle.getInt("id"));
+                deleteTodoCall.enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        if(response.isSuccessful()){
+                            Intent intent = new Intent(TodoDetailActivity.this, MainActivity.class);
+                            startActivity(intent);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+
+                    }
+                });
+            }
+        });
+    }
+
+    private void updateTodoButtonListener(){
+
+        updateTodoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TodoCreate todoCreate = new TodoCreate();
+                Todo todo = new Todo();
+                todo.setTodo(todoContentEditText.getText().toString());
+                todo.setHeader(todoHeaderEditText.getText().toString());
+                todo.setActive("X");
+                //todo.setUsername();
+                todoCreate.setTodo(todo);
+                Call<TodoCreate> todoCreateCall = ManagerAll.getInstance().updateTodo(getToken(), todoCreate, bundle.getInt("id"));
+                todoCreateCall.enqueue(new Callback<TodoCreate>() {
+                    @Override
+                    public void onResponse(Call<TodoCreate> call, Response<TodoCreate> response) {
+                        if(response.isSuccessful()){
+                            Intent intent = new Intent(TodoDetailActivity.this, MainActivity.class);
+                            startActivity(intent);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<TodoCreate> call, Throwable t) {
+
+                    }
+                });
+            }
+        });
+    }
     private void getTodo(){
         bundle = getIntent().getExtras();
         Call<GetOneTodo> getTodoCall = ManagerAll.getInstance().getTodoForId(getToken(), bundle.getInt("id"));

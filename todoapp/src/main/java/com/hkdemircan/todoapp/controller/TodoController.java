@@ -84,6 +84,7 @@ public class TodoController {
         try{
         	TodoDto todoDto = todoService.getTodo(id);
         	todoDto.setTodo(req.getTodo().getTodo());
+        	todoDto.setHeader(req.getTodo().getHeader());
             res = new TodoResponse(HttpServletResponse.SC_OK, null, todoService.saveTodo(todoDto));
         }catch (Exception e){
             e.printStackTrace();

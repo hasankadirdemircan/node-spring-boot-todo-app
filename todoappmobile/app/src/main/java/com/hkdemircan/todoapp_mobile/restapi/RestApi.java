@@ -8,9 +8,11 @@ import com.hkdemircan.todoapp_mobile.model.UserCreate;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface RestApi {
@@ -41,7 +43,16 @@ public interface RestApi {
 
     /*
     Get To do for id
-  */
+    */
     @GET("/todo/{id}")
     Call<GetOneTodo> getTodoForId(@Header("Authorization") String token, @Path("id") int id);
+
+    /*
+    update Todo
+     */
+    @PUT("/todo/{id}")
+    Call<TodoCreate> updateTodo(@Header("Authorization") String token, @Body TodoCreate todoCreate, @Path("id") int id);
+
+    @DELETE("/todo/{id}")
+    Call<Void> deleteTodo(@Header("Authorization") String token, @Path("id") int id);
 }

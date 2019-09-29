@@ -51,8 +51,27 @@ public class ManagerAll extends BaseManager{
         return call;
     }
 
+    /*
+    get to do for id
+     */
     public Call<GetOneTodo> getTodoForId(String token, int id){
         Call call = getRestApiClient().getTodoForId(token, id);
+        return call;
+    }
+
+    /*
+    update to do
+     */
+    public Call<TodoCreate> updateTodo(String token, TodoCreate todoCreate,int id){
+        Call call = getRestApiClient().updateTodo(token, todoCreate, id);
+        return call;
+    }
+
+    /*
+    delete to do
+     */
+    public Call<Void> deleteTodo(String token, int id){
+        Call call = getRestApiClient().deleteTodo(token, id);
         return call;
     }
 }

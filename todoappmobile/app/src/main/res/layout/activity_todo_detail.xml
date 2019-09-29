@@ -67,7 +67,7 @@
         android:orientation="horizontal"
         android:layout_marginTop="20dp">
         <Button
-            android:id="@+id/updateTodoButton"
+            android:id="@+id/deleteTodoButton"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_margin="5dp"
@@ -79,7 +79,7 @@
             android:text="Delete"
             android:textColor="#DC3545"/>
         <Button
-            android:id="@+id/deleteTodoButton"
+            android:id="@+id/updateTodoButton"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_margin="5dp"
