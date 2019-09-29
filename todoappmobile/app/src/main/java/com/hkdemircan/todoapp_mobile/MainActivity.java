@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton actionNewTodo, actionLogout;
     SessionManager session;
     ListView todoListView;
+    GetTodo getTodo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +34,19 @@ public class MainActivity extends AppCompatActivity {
         define();
         getTodo();
         floatingActionButtonListener();
+        todoListViewClickListener();
+
+    }
+
+    private void todoListViewClickListener(){
+       todoListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+           @Override
+           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainActivity.this, TodoDetailActivity.class);
+                intent.putExtra("id", getTodo.getTodos().get(position).getId());
+                startActivity(intent);
+           }
+       });
     }
 
     private void getTodo(){
@@ -40,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<GetTodo> call, Response<GetTodo> response) {
                 if(response.isSuccessful()){
-                    TodoAdapter todoAdapter = new TodoAdapter(response.body(), getApplicationContext());
+                    getTodo = response.body();
+                    TodoAdapter todoAdapter = new TodoAdapter(getTodo, getApplicationContext());
                     todoListView.setAdapter(todoAdapter);
                 }
             }

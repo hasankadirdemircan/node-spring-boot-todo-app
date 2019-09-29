@@ -1,5 +1,6 @@
 package com.hkdemircan.todoapp_mobile.restapi;
 
+import com.hkdemircan.todoapp_mobile.model.GetOneTodo;
 import com.hkdemircan.todoapp_mobile.model.GetTodo;
 import com.hkdemircan.todoapp_mobile.model.LoginUser;
 import com.hkdemircan.todoapp_mobile.model.TodoCreate;
@@ -10,6 +11,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface RestApi {
 
@@ -36,4 +38,10 @@ public interface RestApi {
      */
     @GET("/todo")
     Call<GetTodo> getTodo(@Header("Authorization") String token);
+
+    /*
+    Get To do for id
+  */
+    @GET("/todo/{id}")
+    Call<GetOneTodo> getTodoForId(@Header("Authorization") String token, @Path("id") int id);
 }
