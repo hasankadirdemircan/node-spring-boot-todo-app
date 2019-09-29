@@ -16,6 +16,7 @@ block content
                   th(data-field='createDate', data-sortable='true', data-filter-control='select') createDate
                   th(data-field='username', data-sortable='true', data-filter-control='select') username
                   th(data-field='todo', data-sortable='true', data-filter-control='select') todo
+                  th(data-field='header', data-sortable='true', data-filter-control='select') header
               tbody
                 each todo in todos
                   tr
@@ -25,4 +26,5 @@ block content
                       td
                         a(href='/todo?id=' + todo.id)
                           = todo.todo
+                    td=todo.header
 

@@ -36,15 +36,20 @@
 </p>
 <p align="center">
   <a href="#">
-    <img alt="Techs" title="Techs" src="https://user-images.githubusercontent.com/34090058/64479970-d7290e80-d1c7-11e9-9abe-f2be4a53347c.png"width="700">
+    <img alt="Techs" title="Techs" src="https://user-images.githubusercontent.com/34090058/65837869-1d741800-e305-11e9-9986-b87d0e9b1d51.png"width="700">
   </a>
 </p>
 <p align="center">
   <a href="#">
-    <img alt="Techs" title="Techs" src="https://user-images.githubusercontent.com/34090058/64492643-a2c45980-d27e-11e9-8f62-fa61e3e54c62.png"width="400">
+    <img alt="Techs" title="Techs" src="https://user-images.githubusercontent.com/34090058/65837896-5e6c2c80-e305-11e9-9b43-d29d009fabdd.png"width="400">
   </a>
 </p>
 
+<p align="center">
+  <a href="#">
+    <img alt="Techs" title="Techs" src="https://user-images.githubusercontent.com/34090058/65837889-50b6a700-e305-11e9-9769-419c5d83bc8f.png"width="400">
+  </a>
+</p>
 <p align="center">
   <a href="#">
     <img alt="Techs" title="Techs" src="https://user-images.githubusercontent.com/34090058/64492649-b7a0ed00-d27e-11e9-8f68-32015df89ddb.png"width="700">

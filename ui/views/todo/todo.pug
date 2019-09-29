@@ -25,6 +25,10 @@ block content
               .col-md-6
                 input.form-control(type='text', name='createDate', id='createDate', placeholder='dd/mm/yyyy', value=todo.createDate)
             .form-group.row
+              label.col-md-6.col-form-label.font-weight-bold(for='createDate') Header
+              .col-md-6
+                input.form-control(type='text', name='header', id='header', placeholder='header', value=todo.header)
+            .form-group.row
               label.col-md-6.col-form-label.font-weight-bold(for='todo') todo
               .col-md-6
                 textarea.form-control(type='text', id='todo', name='todo' placeholder='todo')
