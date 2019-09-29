@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
-
+            android:textColor="#F6F6F6"
             android:drawableStart="@drawable/ic_email_black_24dp"
             android:ems="10"
             android:hint="Email"
@@ -52,6 +52,7 @@
             android:ems="10"
             android:hint="Password"
             android:background="#11000000"
+            android:textColor="#F6F6F6"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 

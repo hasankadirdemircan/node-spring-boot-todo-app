@@ -56,6 +56,6 @@
 ## Views (Mobile) <br>
 
 <table>
-	<td><a href="#"><img src="https://user-images.githubusercontent.com/34090058/65822853-a92d6c00-e253-11e9-8aa6-18a82e5ed3c0.png"></a></td>
-	<td><a href="#"><img src="https://user-images.githubusercontent.com/34090058/65822892-7768d500-e254-11e9-8dbf-676de65594f2.png"></a></td>
+	<td><a href="#"><img src="https://user-images.githubusercontent.com/34090058/65822853-a92d6c00-e253-11e9-8aa6-18a82e5ed3c0.png" width="200"></a></td>
+	<td><a href="#"><img src="https://user-images.githubusercontent.com/34090058/65822892-7768d500-e254-11e9-8dbf-676de65594f2.png" width="200"></a></td>
 </table>

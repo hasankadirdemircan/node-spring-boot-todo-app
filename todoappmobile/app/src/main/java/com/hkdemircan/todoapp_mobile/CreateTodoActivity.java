@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.hkdemircan.todoapp_mobile.model.Todo;
@@ -14,7 +17,10 @@ import com.hkdemircan.todoapp_mobile.model.TodoCreate;
 import com.hkdemircan.todoapp_mobile.restapi.ManagerAll;
 import com.hkdemircan.todoapp_mobile.util.Util;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,6 +30,9 @@ public class CreateTodoActivity extends AppCompatActivity {
 
     EditText todoHeaderEditText, todoContentEditText;
     Button saveTodoButton;
+    Spinner priortySpinner;
+    ArrayAdapter<String> priortySpinnerAdapter;
+    String priortyString;
 
     //session durumu
     SessionManager session;
@@ -34,9 +43,13 @@ public class CreateTodoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_todo);
 
         define();
+        priortySpinnerProcess();
         saveTodoButtonListener();
     }
 
+    private void getTodo(){
+
+    }
     private void saveTodoButtonListener(){
         saveTodoButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,13 +92,45 @@ public class CreateTodoActivity extends AppCompatActivity {
             }
         });
     }
+
     private void define(){
         todoHeaderEditText = findViewById(R.id.todoHeaderEditText);
         todoContentEditText = findViewById(R.id.todoContentEditText);
+
+        priortySpinner = findViewById(R.id.priortySpinner);
 
         saveTodoButton = findViewById(R.id.saveTodoButton);
 
         // Session Manager tanımladık.
         session = new SessionManager(getApplicationContext());
+    }
+
+    /*
+    selected priorty spinner
+     */
+    private void priortySpinnerProcess(){
+        // Initializing a String Array
+        String[] priortyArray = new String[]{
+                "1",
+                "2",
+                "3"
+        };
+        List<String> priortyList = new ArrayList<>(Arrays.asList(priortyArray));
+
+
+        priortySpinnerAdapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, priortyList);
+        priortySpinner.setAdapter(priortySpinnerAdapter);
+
+        priortySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                priortyString = (String) parent.getItemAtPosition(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 }

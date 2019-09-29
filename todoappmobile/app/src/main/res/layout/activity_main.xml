@@ -7,6 +7,10 @@
     tools:context=".MainActivity"
     >
 
+    <ListView
+        android:id="@+id/todoListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:id="@+id/newExpenseMenu"
         android:layout_width="50dp"

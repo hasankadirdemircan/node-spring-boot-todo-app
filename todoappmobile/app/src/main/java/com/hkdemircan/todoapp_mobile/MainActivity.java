@@ -5,22 +5,58 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.hkdemircan.todoapp_mobile.adapter.TodoAdapter;
+import com.hkdemircan.todoapp_mobile.model.GetTodo;
+import com.hkdemircan.todoapp_mobile.restapi.ManagerAll;
+
+import java.util.HashMap;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
     FloatingActionButton actionNewTodo, actionLogout;
     SessionManager session;
+    ListView todoListView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         define();
+        getTodo();
         floatingActionButtonListener();
     }
 
+    private void getTodo(){
+        Call<GetTodo> getTodoCall = ManagerAll.getInstance().getTodo(getToken());
+        getTodoCall.enqueue(new Callback<GetTodo>() {
+            @Override
+            public void onResponse(Call<GetTodo> call, Response<GetTodo> response) {
+                if(response.isSuccessful()){
+                    TodoAdapter todoAdapter = new TodoAdapter(response.body(), getApplicationContext());
+                    todoListView.setAdapter(todoAdapter);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetTodo> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Todo'lar Çekilirken Hata", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private String getToken(){
+        HashMap<String, String> user = session.getUserDetails();
+        //session token and username
+        return user.get((SessionManager.KEY_TOKEN));
+    }
     private void floatingActionButtonListener(){
         actionLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,5 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
         actionNewTodo = findViewById(R.id.actionNewTodo);
         actionLogout = findViewById(R.id.actionLogout);
+
+        todoListView = findViewById(R.id.todoListView);
     }
 }

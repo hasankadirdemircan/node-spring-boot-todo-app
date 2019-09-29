@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="3"
+        android:layout_margin="10dp"
+        android:background="@drawable/todos"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/todoHeaderTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="Todo Header"
+            android:textColor="#0F3057"
+            android:layout_marginLeft="15dp"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/todoDateTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/todoHeaderTextView"
+            android:layout_marginTop="3dp"
+            android:text="Date"
+            android:textColor="#0F3057"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="15sp" />
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

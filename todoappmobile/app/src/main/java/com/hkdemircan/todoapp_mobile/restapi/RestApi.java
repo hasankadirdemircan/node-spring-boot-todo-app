@@ -1,11 +1,13 @@
 package com.hkdemircan.todoapp_mobile.restapi;
 
+import com.hkdemircan.todoapp_mobile.model.GetTodo;
 import com.hkdemircan.todoapp_mobile.model.LoginUser;
 import com.hkdemircan.todoapp_mobile.model.TodoCreate;
 import com.hkdemircan.todoapp_mobile.model.UserCreate;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 
@@ -28,4 +30,10 @@ public interface RestApi {
      */
     @POST("/todo")
     Call<Void> saveTodo(@Header("Authorization") String token, @Body TodoCreate todoCreate);
+
+    /*
+    Get Todos
+     */
+    @GET("/todo")
+    Call<GetTodo> getTodo(@Header("Authorization") String token);
 }
