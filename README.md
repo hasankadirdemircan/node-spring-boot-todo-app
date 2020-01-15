@@ -21,6 +21,37 @@
 </p>
 
 
+#### Prerequisite
+
+Installed: Docker, Java 1.8, Maven 3.x, Node 12.14.x
+
+## Introduction
+
+ Todo App Node - Spring Boot  with Docker
+ 
+ ## How to Run  wtih Docker
+ 
+ ##### Up docker-compose
+```
+$ docker-compose up -d
+```
+##### Test application
+for test the running docker image
+```
+$ docker image ls
+```
+for test the running docker container
+```
+$ docker container ps
+```
+for test the running docker-compose
+```
+$ docker-compose ps
+```
+#### For more information visit blog
+section1 :  <a href="http://blog.hkdemircan.com/index.php/2019/10/08/docker-nedir/"> How to Install Docker? </a>
+section2 : <a href="http://blog.hkdemircan.com/index.php/2019/10/15/bolum2-uygulamalarimizi-nasil-dockerize-ederiz-2/"> How to Dockerize Application? </a>
+
 ## Views (WEB) <br>
 
 <p align="center">
