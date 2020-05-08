@@ -29,8 +29,8 @@ for test the running docker-compose
 $ docker-compose ps
 ```
 #### For more information visit blog
-section1 :  <a href="http://blog.hkdemircan.com/index.php/2019/10/08/docker-nedir/"> How to Install Docker? </a>
-section2 : <a href="http://blog.hkdemircan.com/index.php/2019/10/15/bolum2-uygulamalarimizi-nasil-dockerize-ederiz-2/"> How to Dockerize Application? </a>
+section1 :  <a href="https://medium.com/@hkdemircan/b%C3%B6l%C3%BCm1-docker-nedir-ubuntu-%C3%BCzerinde-nas%C4%B1l-kurar%C4%B1z-a683d3078272/"> How to Install Docker? </a>
+section2 : <a href="https://medium.com/@hkdemircan/b%C3%B6l%C3%BCm2-uygulamalar%C4%B1m%C4%B1z%C4%B1-nas%C4%B1l-dockerize-ederiz-9e188eb8c0ca/"> How to Dockerize Application? </a>
 
 ## Views (WEB) <br>
 
