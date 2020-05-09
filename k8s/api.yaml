@@ -23,20 +23,7 @@ spec:
       containers:
       - image:  hkdemircan/api:v1
         imagePullPolicy: IfNotPresent
-        name:  api
-        resources:
-          requests:
-            cpu: "150m"
-            memory: "250M"
-          limits:
-            cpu: "1"
-            memory: "750M"
-        readinessProbe:
-          httpGet:
-            path: /values
-            port: 8080
-          initialDelaySeconds: 10
-          timeoutSeconds: 10     
+        name:  api    
         ports:
         - containerPort:  8080
           name:  api
@@ -51,6 +38,11 @@ spec:
              secretKeyRef:
                name: mysql-user-pass
                key: password
+        - name: MYSQL_URL
+          valueFrom:
+             secretKeyRef:
+               name: mysql-db-url
+               key: url
 ---
 
 kind: Service

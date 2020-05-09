@@ -26,14 +26,7 @@ spec:
           - name:  NODE_ENV
             value: docker
         imagePullPolicy: IfNotPresent
-        name:  ui
-        resources:
-          requests:
-            cpu: "150m"
-            memory: "250M"
-          limits:
-            cpu: "200m"
-            memory: "350M"    
+        name:  ui    
         ports:
         - containerPort: 8082
           name:  ui
@@ -50,7 +43,6 @@ spec:
     type: frontend
   ports:
     - port:  8082
-      targetPort:  8082
       name: http
       nodePort: 31000
   type: NodePort
