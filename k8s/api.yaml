@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+  labels:
+    app:  api
+    version: v1
+    type: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app:  api
+      version: v1
+      type: backend
+  template:
+    metadata:
+      labels:
+        app:  api
+        version: v1
+        type: backend
+    spec:
+      containers:
+      - image:  hkdemircan/api:v1
+        imagePullPolicy: IfNotPresent
+        name:  api
+        resources:
+          requests:
+            cpu: "150m"
+            memory: "250M"
+          limits:
+            cpu: "1"
+            memory: "750M"
+        readinessProbe:
+          httpGet:
+            path: /values
+            port: 8080
+          initialDelaySeconds: 10
+          timeoutSeconds: 10     
+        ports:
+        - containerPort:  8080
+          name:  api
+        env:
+        - name: MYSQL_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mysql-user-pass
+              key: username
+        - name: MYSQL_PASSWORD
+          valueFrom:
+             secretKeyRef:
+               name: mysql-user-pass
+               key: password
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name:  api-service
+spec:
+  selector:
+    app:  api
+    version: v1
+    type: backend
+  type:  ClusterIP
+  ports:
+  - port:  8080
+    targetPort:  8080

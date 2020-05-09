@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ui
+  labels:
+    app:  ui
+    version: v1
+    type: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app:  ui
+      version: v1
+      type: frontend
+  template:
+    metadata:
+      labels:
+        app:  ui
+        version: v1
+        type: frontend
+    spec:
+      containers:
+      - image:  hkdemircan/ui:v1
+        env:
+          - name:  NODE_ENV
+            value: docker
+        imagePullPolicy: IfNotPresent
+        name:  ui
+        resources:
+          requests:
+            cpu: "150m"
+            memory: "250M"
+          limits:
+            cpu: "200m"
+            memory: "350M"    
+        ports:
+        - containerPort: 8082
+          name:  ui
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name:  ui-service
+spec:
+  selector:
+    app:  ui
+    version: v1
+    type: frontend
+  ports:
+    - port:  8082
+      targetPort:  8082
+      name: http
+      nodePort: 31000
+  type: NodePort
