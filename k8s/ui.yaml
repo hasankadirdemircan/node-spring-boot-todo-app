@@ -21,7 +21,7 @@ spec:
         type: frontend
     spec:
       containers:
-      - image:  hkdemircan/bb:v1
+      - image:  hkdemircan/ui:v1
         env:
           - name:  NODE_ENV
             value: product
