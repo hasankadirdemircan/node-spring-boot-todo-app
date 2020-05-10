@@ -34,6 +34,8 @@ const util = require('./utils/util');
   dotenv.load({ path: './env/dev.env' });
 } else if(environment && (environment == 'docker')){
   dotenv.load({ path: './env/docker.env' });
+} else if(environment && (environment == 'product')){
+  dotenv.load({ path: './env/product.env' });
 }else {
   dotenv.load({ path: './env/dev.env' });
 }

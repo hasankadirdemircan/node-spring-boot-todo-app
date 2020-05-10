@@ -81,7 +81,7 @@ exports.login = (username, password, cb) => {
       method: 'POST',
       json: data
     };
-
+    console.info('url:', options);
     request(options, function (error, response, data) {
       console.info('response data-->', data);
       return cb(data);

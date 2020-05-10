@@ -21,10 +21,10 @@ spec:
         type: frontend
     spec:
       containers:
-      - image:  hkdemircan/ui:v1
+      - image:  hkdemircan/bb:v1
         env:
           - name:  NODE_ENV
-            value: docker
+            value: product
         imagePullPolicy: IfNotPresent
         name:  ui    
         ports:
