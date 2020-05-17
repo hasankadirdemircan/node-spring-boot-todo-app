@@ -11,7 +11,7 @@ Installed: Docker, Java 1.8, Maven 3.x, Node 12.14.x
  
  ## How to Run  wtih Docker
  
- ##### Up docker-compose
+##### Up docker-compose
 ```
 $ docker-compose up -d
 ```
@@ -28,6 +28,32 @@ for test the running docker-compose
 ```
 $ docker-compose ps
 ```
+## How to Run  wtih K8s(kubernetes)
+#### k8s folder selected
+```
+cd k8s/
+```
+#### Create MySQL Root Pass - User - User Pass - Database Url
+```
+$ kubectl create secret generic mysql-root-pass --from-literal=password=root
+
+
+$ kubectl create secret generic mysql-user-pass --from-literal=username=root --from-literal=password=c@root
+
+
+$ kubectl create secret generic mysql-db-url --from-literal=database=db --from-literal=url='jdbc:mysql://todo-app-mysql:3306/db?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&characterEncoding=UTF-8'
+```
+##### Yaml File Configuration
+```
+kubectl apply -f .
+```
+#### Test
+```
+kubectl get all
+```
+#### View Test
+**NOT:** Visit to <yourIP>:31000
+	
 #### For more information visit blog
 section1 :  <a href="https://medium.com/@hkdemircan/b%C3%B6l%C3%BCm1-docker-nedir-ubuntu-%C3%BCzerinde-nas%C4%B1l-kurar%C4%B1z-a683d3078272/"> How to Install Docker? </a>
 section2 : <a href="https://medium.com/@hkdemircan/b%C3%B6l%C3%BCm2-uygulamalar%C4%B1m%C4%B1z%C4%B1-nas%C4%B1l-dockerize-ederiz-9e188eb8c0ca/"> How to Dockerize Application? </a>
